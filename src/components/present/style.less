@@ -1,0 +1,176 @@
+@trColor:#fd7331;
+.box{
+    width: 19%;
+    height: 8em;
+
+    img{
+        width: 100%;
+        box-shadow: 0 4px 5px -3px @trColor; 
+    }
+    &:first-child{
+        position: absolute;
+        top: 1.5em;
+        left: 0;
+    }
+    &:nth-child(2){
+        position: absolute;
+        top: 1.5em;
+        left: 20%;
+    }
+    &:nth-child(3){
+        position: absolute;
+        top: 1.5em;
+        left: 40%;
+    }
+    &:nth-child(4){
+        position: absolute;
+        top: 1.5em;
+        left: 60%;
+    }
+    &:nth-child(5){
+        position: absolute;
+        top: 1.5em;
+        left: 80%;
+    }
+    &:nth-child(6){
+        position: absolute;
+        top: 9.5em;
+        left: 0;
+    }
+    &:nth-child(7){
+        position: absolute;
+        top:9.5em;
+        left: 20%;
+    }
+    &:nth-child(8){
+        position: absolute;
+        top: 9.5em;
+        left: 40%;
+    }
+    &:nth-child(9){
+        position: absolute;
+        top: 9.5em;
+        left: 60%;
+    }
+    &:nth-child(10){
+        position: absolute;
+        top: 9.5em;
+        left: 80%;
+    }
+    // position: relative;
+    transform: scale(1);
+    opacity: 1;
+    transition: all 1s ease;
+    &.active{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        // transform: translate(-50%,-50%);
+        transition: all 2s ease;
+
+        .animation(maskshow2 2000ms forwards);
+        z-index: 1;
+        // opacity: 1;
+        transform: scale(1.5) translate(-50%,-50%);
+       
+        &.first{
+            opacity: 1;
+            transform: scale(0);
+            .animation(maskshow 500ms infinite)
+        }
+    }
+}
+.keyframes(maskshow2;{
+	0%{opacity: 1 }
+	100%{opacity: 0 }
+});
+
+.keyframes(maskshow;{
+	0%{.transform(translate(-50%,-50%) scale(1.5) rotateZ(45deg)); }
+	15%{.transform(translate(-50%,-50%) scale(1.5) rotateZ(35deg)); }
+	25%{.transform(translate(-50%,-50%) scale(1.5) rotateZ(5deg)); }
+	50%{.transform(translate(-50%,-50%) scale(1.5) rotateZ(45deg)); }
+	75%{.transform(translate(-50%,-50%) scale(1.5) rotateZ(-45deg)); }
+	85%{.transform(translate(-50%,-50%) scale(1.5) rotateZ(-25deg)); }
+	100%{.transform(translate(-50%,-50%) scale(1.8) rotateZ(45deg));}
+});
+
+.keyframes(@name;@frames){
+    @-webkit-keyframes @name{@frames();}
+    @keyframes @name{@frames();}
+}
+
+.animation(@attr){
+	-webkit-animation:@attr;animation:@attr;
+}
+
+.list {
+    position: absolute;
+}
+ .viewport-flip {
+    -webkit-perspective: 1000;
+    perspective: 1000;
+    // position: absolute;
+}
+.flip {
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translateX(0); /* Needed to work around an iOS 3.1 bug that causes listview thumbs to disappear when -webkit-visibility:hidden is used. */
+    backface-visibility: hidden;/*backface-visibility 属性定义当元素不面向屏幕时是否可见*/
+    transform: translateX(0);
+}
+.flip.out {
+    -webkit-transform: rotateY(-90deg) scale(.9);
+    -webkit-animation-name: flipouttoleft;
+    -webkit-animation-duration: 175ms;
+    transform: rotateY(-90deg) scale(.9);
+    animation-name: flipouttoleft;
+    animation-duration: 175ms;
+}
+.flip.in {
+    -webkit-animation-name: flipintoright;
+    -webkit-animation-duration: 1000ms;
+    animation-name: flipintoright;
+    animation-duration: 1000ms;
+}
+.flip.out.reverse {
+    -webkit-transform: rotateY(90deg) scale(.9);
+    -webkit-animation-name: flipouttoright;
+    transform: rotateY(90deg) scale(.9);
+    animation-name: flipouttoright;
+}
+.flip.in.reverse {
+    -webkit-animation-name: flipintoleft;
+    animation-name: flipintoleft;
+}
+@-webkit-keyframes flipouttoleft {
+    from { -webkit-transform: rotateY(0); }
+    to { -webkit-transform: rotateY(-90deg) scale(.9); }
+}
+@keyframes flipouttoleft {
+    from { transform: rotateY(0); }
+    to { transform: rotateY(-90deg) scale(.9); }
+}
+@-webkit-keyframes flipouttoright {
+    from { -webkit-transform: rotateY(0) ; }
+    to { -webkit-transform: rotateY(90deg) scale(.9); }
+}
+@keyframes flipouttoright {
+    from { transform: rotateY(0); }
+    to { transform: rotateY(90deg) scale(.9); }
+}
+@-webkit-keyframes flipintoleft {
+    from { -webkit-transform: rotateY(-90deg) scale(.9); }
+    to { -webkit-transform: rotateY(0); }
+}
+@keyframes flipintoleft {
+    from { transform: rotateY(-90deg) scale(.9); }
+    to { transform: rotateY(0); }
+}
+@-webkit-keyframes flipintoright {
+    from { -webkit-transform: rotateY(90deg) scale(.9); }
+    to { -webkit-transform: rotateY(0); }
+}
+@keyframes flipintoright {
+    from { transform: rotateY(90deg) scale(.9); }
+    to { transform: rotateY(0); }
+}
